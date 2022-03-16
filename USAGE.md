@@ -89,7 +89,7 @@ Workflow arguments:
 ## <a name="examples"></a> Examples
 ### single sample analysis
 ```
-/Work/pipeline/PMGAP/v1.0.0/pmgap.py all \
+/Work/pipeline/PMGAP/v1.0.0/pmgap.py all \    #流程每一步都可以续投，标错不要删掉结果文件和过程文件
   --reads1 raw_1.fq.gz \
   --reads2 raw_2.fq.gz \
   --prefix NC --taxon viruses --trim 5 --thread 10 --job_type sge \
