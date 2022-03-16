@@ -2,6 +2,10 @@
 ### Version: 1.0.0
 Perform the assembly and annotation process of plasmids, mitochondria, plastids, and phages.
 
+Manuals
+-------
+- [Usage](USAGE.md)
+
 Third-party
 -----------
 PMGAP package includes some third-party software:
