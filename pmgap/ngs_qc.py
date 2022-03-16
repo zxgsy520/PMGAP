@@ -120,12 +120,12 @@ def blast_read_task(prefix, read1, thread, job_type, work_dir, out_dir):
         option="-pe smp %s %s" % (thread, QUEUE),
         script="""
 export PATH={blast}:{python}:$PATH
-python {scripts}/fq2fa.py {read1} -n 100000 >{prefix}.clean.r1.fa
+python {scripts}/fq2fa.py {read1} -n 10000 >{prefix}.clean.r1.fa
 blastn -query {prefix}.clean.r1.fa -db {dbase} \\
   -outfmt "6 std staxid sskingdom staxids" -max_target_seqs 5 -num_threads {thread} \\
   -out {prefix}.m6
 python {scripts}/obtain_taxonomy.py -i {prefix}.m6 -t {taxonomy} -n {prefix}
-python {scripts}/stat_taxonomy.py -i {prefix}.species_annotation.txt -rn 100000 -n {prefix}
+python {scripts}/stat_taxonomy.py -i {prefix}.species_annotation.txt -rn 10000 -n {prefix}
 python {scripts}/plot_stat_species.py {prefix}.stat_species.tsv -p {prefix} > {prefix}.top10_species.tsv
 cp {prefix}.species_classify.tsv {prefix}.stat_species.tsv {out_dir}
 cp {prefix}.top10_species.png {prefix}.top10_species.pdf {out_dir}

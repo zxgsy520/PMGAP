@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 from __future__ import absolute_import, unicode_literals
 
@@ -16,6 +18,9 @@ from thirdparty.seqkit.FastaReader import open_fasta
 
 
 LOG = logging.getLogger(__name__)
+__version__ = "1.1.0"
+__author__ = ("Xingguo Zhang",)
+__email__ = "invicoun@foxmail.com"
 
 
 def cat(fns, outfn):
@@ -243,6 +248,8 @@ def read_fofn(fofn):
 def read_tsv(file, sep="\t"):
 
     for line in open(file):
+        if isinstance(line, bytes):
+            line = line.decode('utf-8')
         line = line.strip()
 
         if not line or line.startswith("#"):
