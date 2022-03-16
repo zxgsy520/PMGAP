@@ -17,4 +17,11 @@ PMGAP package includes some third-party software:
 * [mummer](https://github.com/mummer4/mummer)
 * [circlator](https://github.com/sanger-pathogens/circlator)
 * [prokka](https://github.com/tseemann/prokka)
-* [GeneMarkS](http://topaz.gatech.edu/GeneMark/genemarks.cgi):Gene structure prediction of common viruses (E.g:Suid alphaherpesvirus)
+* [GeneMarkS](http://topaz.gatech.edu/GeneMark/genemarks.cgi): Gene structure prediction of common viruses (E.g:Suid alphaherpesvirus)
+* [vgas](http://cefg.uestc.cn/vgas): Partial virus annotation (African swine fever virus). The link may be invalid, you can install it with conda.
+* [tbl2asn](https://www.ncbi.nlm.nih.gov/genbank/tbl2asn2/)
+* [diamond](https://github.com/bbuchfink/diamond)
+* [interproscan](https://www.msi.umn.edu/sw/interproscan)
+* [abricate](https://github.com/tseemann/abricate)
+
+
