@@ -4,6 +4,7 @@ Table of Contents
 -----------------
 
 - [Quick usage](#quickusage)
+- [Examples](#examples)
 
 
 ## <a name="quickusage"></a> Quick usage
@@ -85,4 +86,25 @@ Workflow arguments:
   --work_dir DIR        Work directory (default: current directory) #流程的工作路径
   --out_dir DIR         Output directory (default: current directory) #流程的结果路径
 ```
+## <a name="examples"></a> Examples
+### single sample analysis
+```
+/Work/pipeline/PMGAP/v1.0.0/pmgap.py all \
+  --reads1 raw_1.fq.gz \
+  --reads2 raw_2.fq.gz \
+  --prefix NC --taxon viruses --trim 5 --thread 10 --job_type sge \
+  --platform mgi --database viral.genomic.fasta \
+  --project 病毒基因组测序分析 --projectid NC2022010501 \
+  --work_dir work  --out_dir out --gcode 1
+```
+### Multiple Sample Analysis
+```
+/Work/pipeline/PMGAP/v1.0.0/pmgap/pmgap_multi.py ngs.list --taxon viruses \   #ngs.list为二代数据路径文件
+  --job_type sge --work_dir work --out_dir out --platform mgi \
+  --gcode 1 --database viral.genomic.fasta \
+  --project 病毒基因组测序分析 --projectid NC2022010501
 
+ngs.list format：
+NC1	/Project/data/NC1_raw_1.fq.gz	/Project/data/NC1_raw_2.fq.gz   #第一列为样本名称，第二列为二代测序的R1文件绝对路径，第三列为二代测序的R1文件绝对路径，
+NC2	/Project/data/NC2_raw_1.fq.gz	/Project/data/NC2_raw_2.fq.gz
+```
