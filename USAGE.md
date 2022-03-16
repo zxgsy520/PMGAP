@@ -101,7 +101,7 @@ Workflow arguments:
 ```
 /Work/pipeline/PMGAP/v1.0.0/pmgap/pmgap_multi.py ngs.list --taxon viruses \   #ngs.list为二代数据路径文件
   --job_type sge --work_dir work --out_dir out --platform mgi \
-  --gcode 1 --database viral.genomic.fasta \
+  --gcode 1 --database viral.genomic.fasta \   #viral.genomic.fasta为参考基因组文件，可以不输入参考，将使用全部数据进行组装
   --project 病毒基因组测序分析 --projectid NC2022010501
 
 ngs.list format：
