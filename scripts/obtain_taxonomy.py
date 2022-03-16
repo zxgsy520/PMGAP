@@ -10,21 +10,29 @@ import argparse
 
 LOG = logging.getLogger(__name__)
 
-__version__ = "0.1.0"
+__version__ = "1.0.0"
 __author__ = ("Xingguo Zhang",)
-__email__ = "113178210@qq.com"
+__email__ = "invicoun@foxmail.com"
 __all__ = []
 
 
 def read_tsv(file, sep="\t"):
 
-    for line in open(file):
+    if file.endswith(".gz"):
+        fh = gzip.open(file)
+    else:
+        fh = open(file)
+
+    for line in fh:
+        if isinstance(line, bytes):
+            line = line.decode('utf-8')
         line = line.strip()
 
         if not line or line.startswith("#"):
             continue
 
         yield line.split(sep)
+    fh.close()
 
 
 def best_blast(file):
@@ -68,7 +76,7 @@ def add_args(parser):
 
     parser.add_argument('-i', '--input', metavar='m6', type=str, required=True,
         help='Input balst comparison file.')
-    parser.add_argument('-t', '--taxonomy', metavar='FILE', type=str, default= '/Work/database/taxonomy/20200609/species.taxonomy',
+    parser.add_argument('-t', '--taxonomy', metavar='FILE', type=str, default= '/export2/master2/sunzy/software/species.taxonomy',
         help='Input the species classification file.')
     parser.add_argument('-n', '--name', metavar='STR', type=str, default= 'out',
         help='Output file prefix')
@@ -91,7 +99,7 @@ name:
 
 attention:
     obtain_taxonomy.py -i txt.fa.m6 -n name
-    obtain_taxonomy.py -i txt.fa.m6 -t /Work/database/taxonomy/20200609/species.taxonomy -n out
+    obtain_taxonomy.py -i txt.fa.m6 -t /export2/master2/sunzy/software/species.taxonomy -n out
 ''')
     args = add_args(parser).parse_args()
 
